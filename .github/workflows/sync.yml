@@ -17,10 +17,12 @@ jobs:
         id: update-submodule
         run: |
           git submodule update --remote
+          touch test
       - name: Commit files
         run: |
           git config --local user.email "github-actions@omniedge.io"
           git config --local user.name "github-actions"
+          git add .
           git commit -m "sync submodule" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
